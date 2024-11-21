@@ -3,6 +3,7 @@ import { isAxiosError, AxiosError } from 'axios';
 import books from '../../api/books';
 import { ApiBooksResponse, Book } from '../../types';
 import BookComponent from '../BookComponent/BookComponent';
+import mockData from '../../mockData';
 
 const BookViewer = () => {
 	const [booksData, setBooksData] = useState<Book[]>([]);
@@ -10,15 +11,16 @@ const BookViewer = () => {
 	useEffect(() => {
 		const getBooks = async () => {
 			try {
-				const response: ApiBooksResponse = await books.get(
-					'search-books'
-				);
-				const booksStateToSet = response.data.books.map(
-					(item) => item[0]
-				);
-				if (error) {
-					setError(null);
-				}
+				// const response: ApiBooksResponse = await books.get(
+				// 	'search-books'
+				// );
+				// const booksStateToSet = response.data.books.map(
+				// 	(item) => item[0]
+				// );
+				// if (error) {
+				// 	setError(null);
+				// }
+				const booksStateToSet = mockData.map((item) => item[0]);
 				setBooksData(booksStateToSet);
 			} catch (err) {
 				const axiosErrorHappened = isAxiosError(err);
@@ -39,7 +41,7 @@ const BookViewer = () => {
 			<BookComponent
 				key={id}
 				title={title}
-				subtitle={subtitle}
+				subTitle={subtitle}
 				image={image}
 			/>
 		));

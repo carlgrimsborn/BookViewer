@@ -1,7 +1,7 @@
 export type Book = {
 	id: number;
 	title: string;
-	subtitle: string;
+	subtitle?: string;
 	image: string;
 };
 

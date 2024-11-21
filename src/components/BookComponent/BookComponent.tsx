@@ -2,13 +2,13 @@ import { IBookComponent } from './types';
 
 const BookComponent: React.FC<IBookComponent> = ({
 	title,
-	subtitle,
+	subTitle,
 	image
 }) => {
 	return (
 		<div>
 			<h1>{title}</h1>
-			<p>{subtitle}</p>
+			{subTitle && <p>{subTitle}</p>}
 			<img src={image} />
 		</div>
 	);

@@ -1,5 +1,5 @@
 export interface IBookComponent {
 	title: string;
-	subtitle: string;
+	subTitle?: string;
 	image: string;
 }
