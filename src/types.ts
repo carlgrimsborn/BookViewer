@@ -12,3 +12,23 @@ export type ApiBooksResponse = {
 		books: ApiBookArray;
 	};
 };
+
+export type ApiBookDetailResponse = {
+	data: {
+		id: number;
+		title: string;
+		image: string;
+		authors: [
+			{
+				id: number;
+				name: string;
+			}
+		];
+		publish_date: number;
+		number_of_pages: number;
+		description: string;
+		rating: {
+			average: number;
+		};
+	};
+};

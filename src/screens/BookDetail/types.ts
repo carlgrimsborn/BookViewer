@@ -7,7 +7,7 @@ export type BookDetails = {
 	title: string;
 	image: string;
 	description: string;
-	publishDate: string;
+	publishDate: number;
 	numberOfPages: number;
 	rating: number;
 	authors: Author[];
