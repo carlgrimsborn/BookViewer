@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { isAxiosError, AxiosError } from 'axios';
-import { Book } from '../../types';
-import BookComponent from '../../components/BookComponent/BookComponent';
+import { AxiosErrorData, Book } from '../../types';
 import mockData from '../../mockData';
+import BookComponent from '../../components/BookComponent/BookComponent';
 
 const BookViewer = () => {
 	const [booksData, setBooksData] = useState<Book[]>([]);
@@ -24,8 +24,10 @@ const BookViewer = () => {
 			} catch (err) {
 				const axiosErrorHappened = isAxiosError(err);
 				if (axiosErrorHappened) {
-					const axiosError = err as AxiosError;
-					setError(axiosError.message);
+					const axiosError = err as AxiosError<AxiosErrorData>;
+					setError(
+						axiosError.response?.data?.message || axiosError.message
+					);
 				} else {
 					console.log('unknown error:', err);
 					setError('Unknown Error');

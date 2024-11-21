@@ -16,30 +16,14 @@ import {
 	BodyContainer,
 	ErrorText
 } from './styles';
-import { ApiBookDetailResponse } from '../../types';
+import { ApiBookDetailResponse, AxiosErrorData } from '../../types';
 import books from '../../api/books';
 import { AxiosError, isAxiosError } from 'axios';
+import mockData from './mockData';
 
 const BookDetail = () => {
 	const { id } = useParams();
-	const [bookData, setBookData] = useState<BookDetails | null>({
-		title: 'title',
-		description: 'description',
-		image: sampleBookImg,
-		publishDate: 2007,
-		numberOfPages: 300,
-		rating: 2,
-		authors: [
-			{
-				id: 1,
-				name: 'author_name'
-			},
-			{
-				id: 2,
-				name: 'author_name_2'
-			}
-		]
-	});
+	const [bookData, setBookData] = useState<BookDetails | null>(null);
 	const [error, setError] = useState<string | null>(null);
 
 	let authorName = '';
@@ -51,12 +35,14 @@ const BookDetail = () => {
 	useEffect(() => {
 		async function getBookDetails() {
 			try {
-				const response: ApiBookDetailResponse = await books.get(
-					`${id}`
-				);
+				// const response: ApiBookDetailResponse = await books.get(
+				// 	`${id}`
+				// );
+				const response = mockData;
 				const booksStateToSet: BookDetails = {
 					title: response.data.title,
 					description: response.data.description,
+					subTitle: response.data.subtitle,
 					image: response.data.image,
 					rating: response.data.rating.average,
 					numberOfPages: response.data.number_of_pages,
@@ -70,8 +56,10 @@ const BookDetail = () => {
 			} catch (err) {
 				const axiosErrorHappened = isAxiosError(err);
 				if (axiosErrorHappened) {
-					const axiosError = err as AxiosError;
-					setError(axiosError.message);
+					const axiosError = err as AxiosError<AxiosErrorData>;
+					setError(
+						axiosError.response?.data?.message || axiosError.message
+					);
 				} else {
 					console.log('unknown error:', err);
 					setError('Unknown Error');
@@ -98,7 +86,9 @@ const BookDetail = () => {
 						{bookData.authors.length > 1 ? 'Authors: ' : 'Author: '}
 						{authorName}
 					</AuthorText>
-					<BodyText>{bookData.description}</BodyText>
+					<BodyText>
+						{bookData.description || bookData.subTitle}
+					</BodyText>
 
 					<RatingText>Rating: {bookData.rating}</RatingText>
 

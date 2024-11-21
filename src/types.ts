@@ -27,8 +27,15 @@ export type ApiBookDetailResponse = {
 		publish_date: number;
 		number_of_pages: number;
 		description: string;
+		subtitle: string;
 		rating: {
 			average: number;
 		};
 	};
+};
+
+export type AxiosErrorData = {
+	code: number;
+	message: string;
+	status: string;
 };

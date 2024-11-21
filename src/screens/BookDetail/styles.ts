@@ -6,6 +6,7 @@ export const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	background-color: #f9f9f9;
+	max-width: 200mv;
 `;
 
 export const BodyContainer = styled.div`
