@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { isAxiosError, AxiosError } from 'axios';
 import { Book } from '../../types';
-import BookComponent from '../BookComponent/BookComponent';
+import BookComponent from '../../components/BookComponent/BookComponent';
 import mockData from '../../mockData';
 
 const BookViewer = () => {
