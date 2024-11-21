@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { isAxiosError, AxiosError } from 'axios';
-import books from '../../api/books';
-import { ApiBooksResponse, Book } from '../../types';
+import { Book } from '../../types';
 import BookComponent from '../BookComponent/BookComponent';
 import mockData from '../../mockData';
 
@@ -37,14 +36,18 @@ const BookViewer = () => {
 	}, []);
 
 	if (booksData.length > 0) {
-		return booksData.map(({ id, image, subtitle, title }) => (
-			<BookComponent
-				key={id}
-				title={title}
-				subTitle={subtitle}
-				image={image}
-			/>
-		));
+		return (
+			<div className='bg-gray-100'>
+				{booksData.map(({ id, image, subtitle, title }) => (
+					<BookComponent
+						key={id}
+						title={title}
+						subTitle={subtitle}
+						image={image}
+					/>
+				))}
+			</div>
+		);
 	} else if (error) {
 		return <p>{error}</p>;
 	} else return <div>Loading...</div>;
