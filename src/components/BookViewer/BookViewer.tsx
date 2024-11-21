@@ -37,7 +37,7 @@ const BookViewer = () => {
 
 	if (booksData.length > 0) {
 		return (
-			<div className='bg-gray-100'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 bg-slate-100'>
 				{booksData.map(({ id, image, subtitle, title }) => (
 					<BookComponent
 						key={id}
