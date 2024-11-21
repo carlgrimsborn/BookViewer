@@ -1,0 +1,51 @@
+import { useEffect, useState } from 'react';
+import { isAxiosError, AxiosError } from 'axios';
+import books from '../../api/books';
+import { ApiBooksResponse, Book } from '../../types';
+import BookComponent from '../BookComponent/BookComponent';
+
+const BookViewer = () => {
+	const [booksData, setBooksData] = useState<Book[]>([]);
+	const [error, setError] = useState<string | null>(null);
+	useEffect(() => {
+		const getBooks = async () => {
+			try {
+				const response: ApiBooksResponse = await books.get(
+					'search-books'
+				);
+				const booksStateToSet = response.data.books.map(
+					(item) => item[0]
+				);
+				if (error) {
+					setError(null);
+				}
+				setBooksData(booksStateToSet);
+			} catch (err) {
+				const axiosErrorHappened = isAxiosError(err);
+				if (axiosErrorHappened) {
+					const axiosError = err as AxiosError;
+					setError(axiosError.message);
+				} else {
+					console.log('unknown error:', err);
+					setError('Unknown Error');
+				}
+			}
+		};
+		getBooks();
+	}, []);
+
+	if (booksData.length > 0) {
+		return booksData.map(({ id, image, subtitle, title }) => (
+			<BookComponent
+				key={id}
+				title={title}
+				subtitle={subtitle}
+				image={image}
+			/>
+		));
+	} else if (error) {
+		return <p>{error}</p>;
+	} else return <div>Loading...</div>;
+};
+
+export default BookViewer;
