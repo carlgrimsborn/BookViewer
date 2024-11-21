@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BookDetails } from './types';
 import sampleBookImg from '../../assets/book.svg';
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import {
 	Container,
 	Header,
@@ -14,15 +14,16 @@ import {
 	Image,
 	AuthorText,
 	BodyContainer,
-	ErrorText
+	ErrorText,
+	RootContainer
 } from './styles';
-import { ApiBookDetailResponse, AxiosErrorData } from '../../types';
-import books from '../../api/books';
+import { AxiosErrorData } from '../../types';
+//import books from '../../api/books';
 import { AxiosError, isAxiosError } from 'axios';
 import mockData from './mockData';
 
 const BookDetail = () => {
-	const { id } = useParams();
+	//const { id } = useParams();
 	const [bookData, setBookData] = useState<BookDetails | null>(null);
 	const [error, setError] = useState<string | null>(null);
 
@@ -71,32 +72,38 @@ const BookDetail = () => {
 
 	if (bookData) {
 		return (
-			<Container>
-				<Image
-					src={bookData.image ? bookData.image : sampleBookImg}
-					alt={bookData.title}
-				/>
-				<BodyContainer>
-					<Header>
-						<BookTitle>{bookData.title}</BookTitle>
-						<SubTitle>Published: {bookData.publishDate}</SubTitle>
-						<SubTitle>Pages: {bookData.numberOfPages}</SubTitle>
-					</Header>
-					<AuthorText>
-						{bookData.authors.length > 1 ? 'Authors: ' : 'Author: '}
-						{authorName}
-					</AuthorText>
-					<BodyText>
-						{bookData.description || bookData.subTitle}
-					</BodyText>
+			<RootContainer>
+				<Container>
+					<Image
+						src={bookData.image ? bookData.image : sampleBookImg}
+						alt={bookData.title}
+					/>
+					<BodyContainer>
+						<Header>
+							<BookTitle>{bookData.title}</BookTitle>
+							<SubTitle>
+								Published: {bookData.publishDate}
+							</SubTitle>
+							<SubTitle>Pages: {bookData.numberOfPages}</SubTitle>
+						</Header>
+						<AuthorText>
+							{bookData.authors.length > 1
+								? 'Authors: '
+								: 'Author: '}
+							{authorName}
+						</AuthorText>
+						<BodyText>
+							{bookData.description || bookData.subTitle}
+						</BodyText>
 
-					<RatingText>Rating: {bookData.rating}</RatingText>
+						<RatingText>Rating: {bookData.rating}</RatingText>
 
-					<BackButton onClick={() => window.history.back()}>
-						Go Back
-					</BackButton>
-				</BodyContainer>
-			</Container>
+						<BackButton onClick={() => window.history.back()}>
+							Go Back
+						</BackButton>
+					</BodyContainer>
+				</Container>
+			</RootContainer>
 		);
 	} else if (error) {
 		return <ErrorText>{error}</ErrorText>;

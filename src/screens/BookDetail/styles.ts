@@ -1,19 +1,24 @@
 import styled from '@emotion/styled';
 
+export const RootContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-top: 80px;
+`;
+
 export const Container = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	background-color: #f9f9f9;
-	max-width: 200mv;
+	max-width: 100vh;
 `;
 
 export const BodyContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-height: 100vh;
 	padding: 200px;
 `;
 
