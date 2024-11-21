@@ -44,6 +44,7 @@ const BookViewer = () => {
 						title={title}
 						subTitle={subtitle}
 						image={image}
+						id={id}
 					/>
 				))}
 			</div>
