@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import BookComponent from '../../components/BookComponent/BookComponent';
 import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import { useBooks } from './hooks';
 import { Container, Grid, ErrorMessage, LoadingMessage } from './styles';
+import { useOffset } from '../../context/OffsetContext';
 
 const BookViewer = () => {
-	const [offset, setOffset] = useState(0);
+	const { offset, setOffset } = useOffset();
 	const { booksData, error } = useBooks(offset);
 
 	const onRefresh = () => setOffset((prev) => prev + 20);
