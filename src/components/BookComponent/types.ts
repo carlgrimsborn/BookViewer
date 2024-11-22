@@ -3,4 +3,6 @@ export interface IBookComponent {
 	subTitle?: string;
 	image: string;
 	id: number;
+	onToggleFavoriteBook: React.MouseEventHandler<HTMLDivElement>;
+	isFavorite: boolean;
 }
