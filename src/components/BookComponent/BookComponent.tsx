@@ -13,6 +13,7 @@ const BookComponent: React.FC<IBookComponent> = ({
 }) => {
 	const navigate = useNavigate();
 	const onClickBook = () => navigate(`./book/${id}`);
+	//	console.log('renders', id);
 	return (
 		<Container onClick={onClickBook}>
 			<Header>

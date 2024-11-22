@@ -1,5 +1,4 @@
 import sampleBookImg from '../../assets/book.svg';
-//import { useParams } from 'react-router-dom';
 import {
 	Container,
 	Header,
@@ -16,9 +15,11 @@ import {
 	RootContainer
 } from './styles';
 import { useBookDetail } from './hooks';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const BookDetail = () => {
 	const { bookData, error } = useBookDetail();
+	const navigate = useNavigate();
 
 	let authorName = '';
 
@@ -54,7 +55,7 @@ const BookDetail = () => {
 
 						<RatingText>Rating: {bookData.rating}</RatingText>
 
-						<BackButton onClick={() => window.history.back()}>
+						<BackButton onClick={() => navigate('/')}>
 							Go Back
 						</BackButton>
 					</BodyContainer>

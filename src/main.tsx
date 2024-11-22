@@ -3,14 +3,14 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-import { OffsetProvider } from './context/OffsetContext.tsx';
+import BookViewerProvider from './context/BookViewerProvider.tsx';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<BrowserRouter>
-			<OffsetProvider>
+			<BookViewerProvider>
 				<App />
-			</OffsetProvider>
+			</BookViewerProvider>
 		</BrowserRouter>
 	</StrictMode>
 );

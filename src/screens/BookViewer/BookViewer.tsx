@@ -1,20 +1,12 @@
 import BookComponent from '../../components/BookComponent/BookComponent';
-import HeaderComponent from '../../components/HeaderComponent/HeaderComponent';
 import { useBooks } from './hooks';
 import { Container, Grid, ErrorMessage, LoadingMessage } from './styles';
-import { useOffset } from '../../context/OffsetContext';
 import { useCallback, useState } from 'react';
 import { Book } from '../../types';
 
 const BookViewer = () => {
-	const { offset, setOffset } = useOffset();
-	const { booksData, error } = useBooks(offset);
+	const { booksData, error } = useBooks();
 	const [favoriteBooks, setFavoriteBooks] = useState<Book[]>([]);
-
-	const onRefresh = useCallback(
-		() => setOffset((prev) => prev + 20),
-		[setOffset]
-	);
 
 	const onToggleFavoriteBook = useCallback(
 		(book: Book) => {
@@ -43,15 +35,9 @@ const BookViewer = () => {
 		[favoriteBooks]
 	);
 
-	console.log('renders');
-
 	return (
 		<Container>
-			<HeaderComponent
-				title='Book Viewer'
-				onRefresh={() => onRefresh()}
-			/>
-			{booksData.length > 0 ? (
+			{booksData.length > 0 && !error ? (
 				<Grid>
 					{booksData.map((book) => (
 						<BookComponent
