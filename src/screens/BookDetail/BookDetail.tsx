@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import { BookDetails } from './types';
 import sampleBookImg from '../../assets/book.svg';
 //import { useParams } from 'react-router-dom';
 import {
