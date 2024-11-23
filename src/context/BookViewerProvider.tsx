@@ -7,13 +7,16 @@ const BookViewerProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
 	const [offset, setOffset] = useState(0);
 	const [booksData, setBooksData] = useState<Book[]>([]);
+	const [favoriteBooks, setFavoriteBooks] = useState<Book[]>([]);
 	return (
 		<BookViewerContext.Provider
 			value={{
 				offset,
 				setOffset,
 				booksData,
-				setBooksData
+				setBooksData,
+				favoriteBooks,
+				setFavoriteBooks
 			}}
 		>
 			{children}

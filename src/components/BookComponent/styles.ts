@@ -23,14 +23,14 @@ export const Header = styled.div`
 	position: relative;
 `;
 
-export const StarIcon = styled.div<{ isFavorited: boolean }>`
+export const StarIcon = styled.div<{ isFavorite: boolean }>`
 	position: absolute;
 	top: 5px;
 	right: 16px;
 	cursor: pointer;
 	font-size: 24px;
 	color: ${(props) =>
-		props.isFavorited ? '#f59e0b' : '#9ca3af'}; /* amber-500 or gray-400 */
+		props.isFavorite ? '#f59e0b' : '#9ca3af'}; /* amber-500 or gray-400 */
 	transition: color 0.3s;
 `;
 

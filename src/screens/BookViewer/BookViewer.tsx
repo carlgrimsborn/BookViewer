@@ -1,12 +1,13 @@
 import BookComponent from '../../components/BookComponent/BookComponent';
 import { useBooks } from './hooks';
 import { Container, Grid, ErrorMessage, LoadingMessage } from './styles';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { Book } from '../../types';
+import useBookViewerContext from '../../context/useBookViewerContext';
 
 const BookViewer = () => {
 	const { booksData, error } = useBooks();
-	const [favoriteBooks, setFavoriteBooks] = useState<Book[]>([]);
+	const { favoriteBooks, setFavoriteBooks } = useBookViewerContext();
 
 	const onToggleFavoriteBook = useCallback(
 		(book: Book) => {
@@ -23,7 +24,7 @@ const BookViewer = () => {
 				setFavoriteBooks(stateToSet);
 			}
 		},
-		[favoriteBooks]
+		[favoriteBooks, setFavoriteBooks]
 	);
 
 	const bookIsFavorite = useCallback(
