@@ -64,18 +64,12 @@ export const AuthorText = styled.p`
 	margin-bottom: 20px;
 `;
 
-export const RatingText = styled.div`
-	font-size: 1.2rem;
-	font-weight: bold;
-	color: #f39c12;
-	margin-bottom: 20px;
-`;
-
 export const BackButton = styled.button`
 	background-color: #3498db;
 	color: white;
 	font-size: 1rem;
 	padding: 10px 20px;
+	margin-top: 20px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;

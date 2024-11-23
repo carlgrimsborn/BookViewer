@@ -5,7 +5,6 @@ import {
 	BookTitle,
 	SubTitle,
 	BodyText,
-	RatingText,
 	BackButton,
 	Image,
 	AuthorText,
@@ -15,6 +14,7 @@ import {
 import { useBookDetail } from './hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 import StatusDisplay from '../../components/StatusDisplay/StatusDisplay';
+import RatingComponent from '../../components/RatingComponent/RatingComponent';
 
 const BookDetail = () => {
 	const { bookData, error } = useBookDetail();
@@ -26,7 +26,7 @@ const BookDetail = () => {
 		authorName = authorName + (i >= 1 ? ', ' : '') + author.name;
 	});
 
-	if (bookData) {
+	if (bookData && !error) {
 		return (
 			<RootContainer>
 				<Container>
@@ -52,7 +52,7 @@ const BookDetail = () => {
 							{bookData.description || bookData.subTitle}
 						</BodyText>
 
-						<RatingText>Rating: {bookData.rating}</RatingText>
+						<RatingComponent rating={bookData.rating} />
 
 						<BackButton onClick={() => navigate('/')}>
 							Go Back

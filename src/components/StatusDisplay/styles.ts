@@ -7,6 +7,7 @@ export const Container = styled.div`
 	align-items: center;
 	height: 100%;
 	text-align: center;
+	margin-top: 5rem;
 `;
 
 export const Message = styled.p`
@@ -15,7 +16,7 @@ export const Message = styled.p`
 `;
 
 export const ErrorMessage = styled.p`
-	font-size: 1rem;
+	font-size: 1.3rem;
 	color: #d9534f;
 `;
 
