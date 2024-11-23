@@ -1,9 +1,10 @@
 import BookComponent from '../../components/BookComponent/BookComponent';
 import { useBooks } from './hooks';
-import { Container, Grid, ErrorMessage, LoadingMessage } from './styles';
+import { Container, Grid } from './styles';
 import { useCallback } from 'react';
 import { Book } from '../../types';
 import useBookViewerContext from '../../context/useBookViewerContext';
+import StatusDisplay from '../../components/StatusDisplay/StatusDisplay';
 
 const BookViewer = () => {
 	const { booksData, error } = useBooks();
@@ -56,9 +57,9 @@ const BookViewer = () => {
 					))}
 				</Grid>
 			) : error ? (
-				<ErrorMessage>{error}</ErrorMessage>
+				<StatusDisplay message={error} type='error' />
 			) : (
-				<LoadingMessage>Loading...</LoadingMessage>
+				<StatusDisplay message='Loading...' type='loading' />
 			)}
 		</Container>
 	);

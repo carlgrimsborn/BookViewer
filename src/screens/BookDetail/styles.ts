@@ -85,12 +85,3 @@ export const BackButton = styled.button`
 		background-color: #2980b9;
 	}
 `;
-
-export const LoadingText = styled.p`
-	font-size: 1rem;
-`;
-
-export const ErrorText = styled.p`
-	font-size: 1rem;
-	color: red;
-`;

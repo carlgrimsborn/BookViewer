@@ -25,17 +25,3 @@ export const Grid = styled.div`
 		grid-template-columns: repeat(4, 1fr);
 	}
 `;
-
-export const ErrorMessage = styled.p`
-	color: red;
-	text-align: center;
-	font-size: 1.2rem;
-	margin-top: 20px;
-`;
-
-export const LoadingMessage = styled.div`
-	text-align: center;
-	font-size: 1.2rem;
-	margin-top: 20px;
-	color: #555;
-`;

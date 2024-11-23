@@ -17,6 +17,7 @@ export const Title = styled.h1`
 
 export const ResetButton = styled.button`
 	padding: 0.5rem 1rem;
+	margin-right: 5px;
 	font-size: 1rem;
 	color: white;
 	background-color: #007bff;
@@ -31,6 +32,7 @@ export const ResetButton = styled.button`
 
 export const FavoritesButton = styled.button`
 	padding: 0.5rem 1rem;
+	margin-left: 5px;
 	font-size: 1rem;
 	color: white;
 	background-color: #28a745;

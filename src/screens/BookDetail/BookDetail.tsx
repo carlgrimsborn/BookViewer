@@ -7,15 +7,14 @@ import {
 	BodyText,
 	RatingText,
 	BackButton,
-	LoadingText,
 	Image,
 	AuthorText,
 	BodyContainer,
-	ErrorText,
 	RootContainer
 } from './styles';
 import { useBookDetail } from './hooks';
 import { useNavigate, useParams } from 'react-router-dom';
+import StatusDisplay from '../../components/StatusDisplay/StatusDisplay';
 
 const BookDetail = () => {
 	const { bookData, error } = useBookDetail();
@@ -63,8 +62,8 @@ const BookDetail = () => {
 			</RootContainer>
 		);
 	} else if (error) {
-		return <ErrorText>{error}</ErrorText>;
-	} else return <LoadingText>Loading...</LoadingText>;
+		return <StatusDisplay type={'error'} message={error} />;
+	} else return <StatusDisplay type='loading' message='Loading ...' />;
 };
 
 export default BookDetail;
