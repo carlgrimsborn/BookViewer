@@ -13,6 +13,8 @@ const FavoriteBooks: React.FC<IFavoriteBooks> = ({ books }) => {
 						subTitle={book.subtitle}
 						image={book.image}
 						id={book.id}
+						isFavorite={true}
+						onToggleFavoriteBook={() => {}}
 					/>
 				))
 			) : (
