@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
-import mockData from './mockData';
 import { BookDetails } from './types';
 import { AxiosError, isAxiosError } from 'axios';
 import { ApiBookDetailResponse, AxiosErrorData } from '../../types';
 import { bookDetail } from '../../api/instances';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 export const useBookDetail = () => {
-	//const { id } = useParams();
+	const { id } = useParams();
 	const [bookData, setBookData] = useState<BookDetails | null>(null);
 	const [error, setError] = useState<string | null>(null);
+	const location = useLocation();
+
 	useEffect(() => {
 		async function getBookDetails() {
 			try {
-				// const response: ApiBookDetailResponse = await bookDetail.get(
-				// 	`${id}`
-				// );
-				const response = mockData;
+				const response: ApiBookDetailResponse = await bookDetail.get(
+					`${id}`
+				);
 				const booksStateToSet: BookDetails = {
 					title: response.data.title,
 					description: response.data.description,
@@ -45,7 +45,7 @@ export const useBookDetail = () => {
 			}
 		}
 		getBookDetails();
-	}, []);
+	}, [location]);
 
 	return {
 		bookData,

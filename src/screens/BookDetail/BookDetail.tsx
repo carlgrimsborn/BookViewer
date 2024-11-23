@@ -12,7 +12,7 @@ import {
 	RootContainer
 } from './styles';
 import { useBookDetail } from './hooks';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import StatusDisplay from '../../components/StatusDisplay/StatusDisplay';
 import RatingComponent from '../../components/RatingComponent/RatingComponent';
 
